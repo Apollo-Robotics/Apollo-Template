@@ -22,4 +22,4 @@
 #include "apollo/units/QTorque.hpp "
 #include "apollo/units/QVolume.hpp "
 #include "apollo/units/RQuantity.hpp "
-#include "apollo/units/RQuantityName.hpp
+#include "apollo/units/RQuantityName.hpp"
