@@ -57,15 +57,15 @@ public:
   Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
              std::vector<int> right_motor_ports, int inertial_sensor_port,
              double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-             double drivetrain_gear_catridge, int left_rotation_ports,
-             int right_rotation_ports, double tracker_wheel_diameter,
+             double drivetrain_gear_catridge, int left_rotation_port,
+             int right_rotation_port, double tracker_wheel_diameter,
              double tracker_gear_ratio);
   // tank with rotation center
   Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
              std::vector<int> right_motor_ports, int inertial_sensor_port,
              double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-             double drivetrain_gear_catridge, int left_rotation_ports,
-             int right_rotation_ports, int center_rotation_ports,
+             double drivetrain_gear_catridge, int left_rotation_port,
+             int right_rotation_port, int center_rotation_port,
              double tracker_wheel_diameter, double tracker_gear_ratio);
 
   // meccanum, x
@@ -75,29 +75,144 @@ public:
              std::vector<int> back_right_motor_ports, int inertial_sensor_port,
              double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
              double drivetrain_gear_catridge);
-  // meccanum with adi
-  // meccanum with adi center
-  // meccanum with rotation
-
-  // x
-  // x with adi
-  // x with adi center
-  // x with rotation
-  // x with rotation center
-  // x with rotation center
+  // meccanum,x with adi
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // meccanum,x with adi center
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             std::vector<int> center_adi_encoder_ports,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // meccanum,x with rotation
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge, int left_rotation_port,
+             int right_rotation_port, double tracker_wheel_diameter,
+             double tracker_gear_ratio);
+  // meccanum,x with rotation center
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge, int left_rotation_port,
+             int right_rotation_port, int center_rotation_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
 
   // asterisk
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> left_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge);
   // asterisk with adi
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> left_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
   // asterisk with adi center
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> left_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             std::vector<int> center_adi_encoder_ports,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
   // asterisk with rotation
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> left_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge, int left_rotation_port,
+             int right_rotation_port, double tracker_wheel_diameter,
+             double tracker_gear_ratio);
   // asterisk with rotation center
-  // asterisk with rotation center
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> left_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge, int left_rotation_port,
+             int right_rotation_port, int center_rotation_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
 
   // h
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> center_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge);
   // h with adi
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> center_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
   // h with adi center
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> center_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             std::vector<int> center_adi_encoder_ports,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
   // h with rotaion
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> center_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge, int left_rotation_port,
+             int right_rotation_port, double tracker_wheel_diameter,
+             double tracker_gear_ratio);
   // h with rotation center
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> center_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge, int left_rotation_port,
+             int right_rotation_port, int center_rotation_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
 };
 } // namespace chassis
 } // namespace apollo
