@@ -16,7 +16,9 @@ namespace apollo {
 namespace chassis {
 class Drivetrain {
 public:
-  int joystick_threshold;
+  /////
+  // Drivetrain Types
+  /////
   std::vector<pros::Motor> left_motors;
   std::vector<pros::Motor> right_motors;
   std::vector<pros::Motor> front_left_motors;
@@ -52,6 +54,23 @@ public:
              std::vector<int> left_adi_encoder_ports,
              std::vector<int> right_adi_encoder_ports,
              std::vector<int> center_adi_encoder_ports,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // tank with adi expander
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports, int expander_smart_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // tank with adi center expander
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             std::vector<int> center_adi_encoder_ports, int expander_smart_port,
              double tracker_wheel_diameter, double tracker_gear_ratio);
   // tank with rotation
   Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
@@ -96,6 +115,27 @@ public:
              std::vector<int> right_adi_encoder_ports,
              std::vector<int> center_adi_encoder_ports,
              double tracker_wheel_diameter, double tracker_gear_ratio);
+  // meccanum,x with adi expander
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports, int expander_smart_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // meccanum,x with adi center expander
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             std::vector<int> center_adi_encoder_ports, int expander_smart_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
   // meccanum,x with rotation
   Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
              std::vector<int> front_right_motor_ports,
@@ -114,7 +154,6 @@ public:
              double drivetrain_gear_catridge, int left_rotation_port,
              int right_rotation_port, int center_rotation_port,
              double tracker_wheel_diameter, double tracker_gear_ratio);
-
   // asterisk
   Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
              std::vector<int> left_motor_ports,
@@ -148,6 +187,31 @@ public:
              std::vector<int> left_adi_encoder_ports,
              std::vector<int> right_adi_encoder_ports,
              std::vector<int> center_adi_encoder_ports,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // asterisk with adi expander
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> left_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports, int expander_smart_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // asterisk with adi center expander
+  Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
+             std::vector<int> left_motor_ports,
+             std::vector<int> back_left_motor_ports,
+             std::vector<int> front_right_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> back_right_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             std::vector<int> center_adi_encoder_ports, int expander_smart_port,
              double tracker_wheel_diameter, double tracker_gear_ratio);
   // asterisk with rotation
   Drivetrain(util::drivetrain_type, std::vector<int> front_left_motor_ports,
@@ -197,7 +261,26 @@ public:
              std::vector<int> right_adi_encoder_ports,
              std::vector<int> center_adi_encoder_ports,
              double tracker_wheel_diameter, double tracker_gear_ratio);
-  // h with rotaion
+  // h with adi expander
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> center_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports, int expander_smart_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // h with adi center expander
+  Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
+             std::vector<int> right_motor_ports,
+             std::vector<int> center_motor_ports, int inertial_sensor_port,
+             double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
+             double drivetrain_gear_catridge,
+             std::vector<int> left_adi_encoder_ports,
+             std::vector<int> right_adi_encoder_ports,
+             std::vector<int> center_adi_encoder_ports, int expander_smart_port,
+             double tracker_wheel_diameter, double tracker_gear_ratio);
+  // h with rotation
   Drivetrain(util::drivetrain_type, std::vector<int> left_motor_ports,
              std::vector<int> right_motor_ports,
              std::vector<int> center_motor_ports, int inertial_sensor_port,
@@ -213,6 +296,56 @@ public:
              double drivetrain_gear_catridge, int left_rotation_port,
              int right_rotation_port, int center_rotation_port,
              double tracker_wheel_diameter, double tracker_gear_ratio);
+
+  /////
+  // User Control
+  /////
+  int joytstick_deadzone;
+  void tank_control(util::drivetrain_swing_type);
+  void arcade_control(util::drivetrain_control_type,
+                      util::drivetrain_swing_type);
+  void set_active_brake(int input);
+  void set_joystick_deadzone(int input);
+  void standard_curve_function(int input);
+  /////
+  // PTO
+  /////
+  /////
+  // Telemetry
+  /////
+  int get_left_sensor_value();
+  int get_left_sensor_velocity();
+  double get_left_motor_voltage();
+  double get_left_motor_current();
+  int get_right_sensor_value();
+  int get_right_sensor_velocity();
+  double get_right_motor_voltage();
+  double get_right_motor_current();
+  double get_inertial_sensor_value();
+  void reset_drive_sensors();
+  void reset_inertial_sensor();
+  void reset_left_drive_sensor();
+  void reset_right_drive_sensor();
+  /////
+  // Autonomous
+  /////
+  void set_max_speed(int input);
+  int get_max_speed();
+
+private:
+  double active_brake = 0;
+  int max_speed;
+  double tick_per_revolution;
+  double tick_per_inch;
+  double motor_cartridge;
+
+  double tracker_circumference;
+  double tracker_diameter;
+  double tracker_ratio;
+
+  double wheel_circumference;
+  double wheel_diameter;
+  double wheel_gear_ratio;
 };
 } // namespace chassis
 } // namespace apollo

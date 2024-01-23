@@ -13,5 +13,7 @@ enum drivetrain_type {
   MECCANUM_DRIVE = 3,
   H_DRIVE = 4
 };
+enum drivetrain_control_type { SINGLE_JOYSTICK = 1, SPLIT_JOYSTICK = 2 };
+enum drivetrain_swing_type { LEFT_SWING = 1, RIGHT_SWING = 2 };
 } // namespace util
 } // namespace apollo
