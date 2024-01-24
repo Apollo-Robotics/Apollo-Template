@@ -1,7 +1,7 @@
 {
     "py/object": "pros.conductor.project.Project",
     "py/state": {
-        "project_name": "Apollo-Template-PROS",
+        "project_name": "Apollo-Template",
         "target": "v5",
         "templates": {
             "kernel": {
