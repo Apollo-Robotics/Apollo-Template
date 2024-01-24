@@ -39,20 +39,20 @@
 /**
  * You should add more #includes here
  */
-//#include "apollo/api.hpp"
-//#include "pros/api_legacy.h"
+#include "apollo/api.hpp"
+// #include "pros/api_legacy.h"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
  * Motor, you can use the namespace with the following commented out line.
  *
- * IMPORTANT: Only the okapi or pros namespace may be used, not both
- * concurrently! The okapi namespace will export all symbols inside the pros
+ * IMPORTANT: Only the apollo or pros namespace may be used, not both
+ * concurrently! The apollo namespace will export all symbols inside the pros
  * namespace.
  */
 // using namespace pros;
 // using namespace pros::literals;
-// using namespace okapi;
+using namespace apollo;
 
 /**
  * Prototypes for the competition control tasks are redefined here to ensure
@@ -75,7 +75,7 @@ void opcontrol(void);
 /**
  * You can add C++-only headers here
  */
-//#include <iostream>
+// #include <iostream>
 #endif
 
-#endif  // _PROS_MAIN_H_
+#endif // _PROS_MAIN_H_

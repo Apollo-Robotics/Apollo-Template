@@ -24,5 +24,5 @@ constexpr QArea millimeter2 = millimeter * millimeter;
 constexpr QArea inch2 = inch * inch;
 constexpr QArea foot2 = foot * foot;
 constexpr QArea mile2 = mile * mile;
-} // namespace okapi
+} // namespace apollo
 }
