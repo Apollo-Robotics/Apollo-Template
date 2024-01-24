@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Check out repository code
+      - name: Check out Repository Code
         uses: actions/checkout@v3
       - name: Builds Code
         uses: fishsticks89/pros-build@v1
