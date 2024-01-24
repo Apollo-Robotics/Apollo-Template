@@ -1,4 +1,4 @@
-name: pros make
+name: build
 
 # Controls when the workflow will run
 on: [push, pull_request, workflow_dispatch]
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Check out Repository Code
+      - name: Check out repository code
         uses: actions/checkout@v3
       - name: Builds Code
         uses: fishsticks89/pros-build@v1
