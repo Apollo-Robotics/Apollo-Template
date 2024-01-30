@@ -1,5 +1,7 @@
 # Apollo Template
 
+![](https://img.shields.io/github/downloads/Apollo-Robotics/Apollo-Template/total.svg)
+
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
 [![Build](https://github.com/Apollo-Robotics/Apollo-Template-PROS/actions/workflows/main.yml/badge.svg)](https://github.com/Apollo-Robotics/Apollo-Template-PROS/blob/main/.github/workflows/main.yml)
