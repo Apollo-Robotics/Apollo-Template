@@ -33,7 +33,7 @@ A custom template based on the PROS (Purdue Robotics Operating System) meant to 
 
    To initialize, define a chassis using the `Chassis` class, give it a name, and add your motor ports and drive parameters like such:
 
-   ```bash
+   ```c++
    Chassis drivetrain( {1, 2}, {3, 4}, 5, 4, 1, 200);
    ```
 
@@ -41,7 +41,7 @@ A custom template based on the PROS (Purdue Robotics Operating System) meant to 
 
 6. Finally, reference the class in any `.hpp` or `.h` file, such as `main.h`, like such:
 
-   ```bash
+   ```c++
    extern Chassis drivetrain();
    ```
 
