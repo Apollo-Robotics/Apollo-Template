@@ -31,10 +31,10 @@ prosv5 c apply Apollo-Template
 4. Once the commands have been executed and the program installed, add `#include "apollo/api.hpp"` anywhere in `main.h`
 5. Once done, intialize the drivetrain in any `.cpp` or `.c` file, such as main.cpp
 
-&emsp;&emsp;To initialize, define a chassis using the `Drivetrain` class, give it a name, and add your motor ports and drive parameters like such:
+&emsp;&emsp;To initialize, define a chassis using the `Chassis` class, give it a name, and add your motor ports and drive parameters like such:
 
 ```c++
-Drivetrain drivetrain(util::TANK_DRIVE, {1, 2}, {3, 4}, 5, 4, 1, 200);
+Chassis drivetrain(util::TANK_DRIVE, {1, 2}, {3, 4}, 5, 4, 1, 200);
 ```
 
 &emsp;&emsp;Read the documentation [here](https://github.com/Apollo-Robotics/Apollo-Template-PROS/wiki) to finish initializing or look at the example definition [here](https://github.com/Apollo-Robotics/Apollo-Template-PROS/blob/main/src/main.cpp)!
@@ -42,7 +42,7 @@ Drivetrain drivetrain(util::TANK_DRIVE, {1, 2}, {3, 4}, 5, 4, 1, 200);
 6. Finally, reference the class in any `.hpp` or `.h` file, such as `main.h`, like such:
 
 ```c++
-extern Drivetrain drivetrain();
+extern Chassis drivetrain();
 ```
 
 And.... Your done!
@@ -52,3 +52,14 @@ It's not **_rocket science_**, it's **Robotics**!
 ### Pre-Done Installation
 
 1. Download the latest template [here](https://github.com/Apollo-Robotics/Apollo-Template-PROS/releases).
+
+
+# Basic Features
+
+Apollo Template is meant to be used as an all-in-one template for easily setting up your drivetrain. Simply input all your drivetrain parameters, choose your flavor of joystick control, and you're off to the races.
+
+Currently, Apollo Template supports only tank drive configurations with a basic arcade and tank control methods. We plan to add X Drive as well as Meccanum drive support at later versions
+
+# Notes:
+
+Apollo Template is only supported on PROS Kernel version 3.8.0. A PROS 4 version will be availible once PROS 4 is out of beta.
