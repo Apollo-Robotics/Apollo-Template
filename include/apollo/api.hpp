@@ -5,7 +5,8 @@
  */
 #pragma once
 
-#include "apollo/chassis/drivetrain.hpp"
+#include "apollo/chassis/chassisModel.hpp"
+#include "apollo/chassis/chassisTankModel.hpp"
 #include "apollo/units/QAcceleration.hpp"
 #include "apollo/units/QAngle.hpp"
 #include "apollo/units/QAngularAcceleration.hpp"

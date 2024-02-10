@@ -9,18 +9,17 @@ extern pros::Controller master;
 
 namespace apollo {
 namespace util {
-enum drivetrain_type {
-  TANK_DRIVE = 1,
-  X_DRIVE = 2,
-  MECCANUM_DRIVE = 3,
-  H_DRIVE = 4
+enum chassis_tracker_type {
+  DRIVE_MOTOR_ENCODER,
+  DRIVE_ADI_ENCODER,
+  DRIVE_ROTATION_SENSOR
 };
-enum drivetrain_tracker_type {
-  DRIVE_MOTOR_ENCODER = 1,
-  DRIVE_ADI_ENCODER = 2,
-  DRIVE_ROTATION_SENSOR = 3
+enum chassis_control_type {
+  NORMAL_SINGLE_JOYSTICK,
+  NORMAL_SPLIT_JOYSTICK,
+  FLIPPED_SINGLE_JOYSTICK,
+  FLIPPED_SPLIT_JOYSTICK
 };
-enum drivetrain_control_type { SINGLE_JOYSTICK = 1, SPLIT_JOYSTICK = 2 };
 bool is_reversed(double input);
 } // namespace util
 } // namespace apollo
