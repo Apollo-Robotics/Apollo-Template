@@ -13,21 +13,24 @@ namespace apollo {
 Tank::Tank(std::vector<int> left_motor_ports,
            std::vector<int> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-           double drivetrain_motor_cartridge)
+           pros::v5::MotorGears drivetrain_motor_cartridge)
     : inertial_sensor(inertial_sensor_port),
       left_adi_encoder_tracker(-1, -1, false),
       right_adi_encoder_tracker(-1, -1, false),
       center_adi_encoder_tracker(-1, -1, false), left_rotation_tracker(-1),
       right_rotation_tracker(-1), center_rotation_tracker(-1) {
+  // const std::int8_t port, const pros::v5::MotorGears gearset =
+  // pros::v5::MotorGears::green,const pros::v5::MotorUnits encoder_units =
+  // pros::v5::MotorUnits::degrees
   for (auto i : left_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     left_motors.push_back(temp);
   }
   for (auto i : right_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     right_motors.push_back(temp);
   }
-  wheel_motor_cartridge = drivetrain_motor_cartridge;
+  wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
   wheel_diameter = drivetrain_wheel_diameter;
@@ -45,7 +48,7 @@ Tank::Tank(std::vector<int> left_motor_ports,
 Tank::Tank(std::vector<int> left_motor_ports,
            std::vector<int> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-           double drivetrain_motor_cartridge,
+           pros::v5::MotorGears drivetrain_motor_cartridge,
            std::vector<int> left_adi_encoder_ports,
            std::vector<int> right_adi_encoder_ports,
            double tracker_wheel_diameter, double tracker_gear_ratio)
@@ -59,14 +62,14 @@ Tank::Tank(std::vector<int> left_motor_ports,
       center_adi_encoder_tracker(-1, -1, false), left_rotation_tracker(-1),
       right_rotation_tracker(-1), center_rotation_tracker(-1) {
   for (auto i : left_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     left_motors.push_back(temp);
   }
   for (auto i : right_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     right_motors.push_back(temp);
   }
-  wheel_motor_cartridge = drivetrain_motor_cartridge;
+  wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
   wheel_diameter = drivetrain_wheel_diameter;
@@ -83,7 +86,7 @@ Tank::Tank(std::vector<int> left_motor_ports,
 Tank::Tank(std::vector<int> left_motor_ports,
            std::vector<int> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-           double drivetrain_motor_cartridge,
+           pros::v5::MotorGears drivetrain_motor_cartridge,
            std::vector<int> left_adi_encoder_ports,
            std::vector<int> right_adi_encoder_ports,
            std::vector<int> center_adi_encoder_ports,
@@ -101,14 +104,14 @@ Tank::Tank(std::vector<int> left_motor_ports,
       left_rotation_tracker(-1), right_rotation_tracker(-1),
       center_rotation_tracker(-1) {
   for (auto i : left_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     left_motors.push_back(temp);
   }
   for (auto i : right_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     right_motors.push_back(temp);
   }
-  wheel_motor_cartridge = drivetrain_motor_cartridge;
+  wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
   wheel_diameter = drivetrain_wheel_diameter;
@@ -125,7 +128,7 @@ Tank::Tank(std::vector<int> left_motor_ports,
 Tank::Tank(std::vector<int> left_motor_ports,
            std::vector<int> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-           double drivetrain_motor_cartridge,
+           pros::v5::MotorGears drivetrain_motor_cartridge,
            std::vector<int> left_adi_encoder_ports,
            std::vector<int> right_adi_encoder_ports, int expander_smart_port,
            double tracker_wheel_diameter, double tracker_gear_ratio)
@@ -140,14 +143,14 @@ Tank::Tank(std::vector<int> left_motor_ports,
       center_adi_encoder_tracker(-1, -1, false), left_rotation_tracker(-1),
       right_rotation_tracker(-1), center_rotation_tracker(-1) {
   for (auto i : left_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     left_motors.push_back(temp);
   }
   for (auto i : right_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     right_motors.push_back(temp);
   }
-  wheel_motor_cartridge = drivetrain_motor_cartridge;
+  wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
   wheel_diameter = drivetrain_wheel_diameter;
@@ -164,7 +167,7 @@ Tank::Tank(std::vector<int> left_motor_ports,
 Tank::Tank(std::vector<int> left_motor_ports,
            std::vector<int> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-           double drivetrain_motor_cartridge,
+           pros::v5::MotorGears drivetrain_motor_cartridge,
            std::vector<int> left_adi_encoder_ports,
            std::vector<int> right_adi_encoder_ports,
            std::vector<int> center_adi_encoder_ports, int expander_smart_port,
@@ -184,14 +187,14 @@ Tank::Tank(std::vector<int> left_motor_ports,
       left_rotation_tracker(-1), right_rotation_tracker(-1),
       center_rotation_tracker(-1) {
   for (auto i : left_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     left_motors.push_back(temp);
   }
   for (auto i : right_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     right_motors.push_back(temp);
   }
-  wheel_motor_cartridge = drivetrain_motor_cartridge;
+  wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
   wheel_diameter = drivetrain_wheel_diameter;
@@ -208,9 +211,9 @@ Tank::Tank(std::vector<int> left_motor_ports,
 Tank::Tank(std::vector<int> left_motor_ports,
            std::vector<int> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-           double drivetrain_motor_cartridge, int left_rotation_port,
-           int right_rotation_port, double tracker_wheel_diameter,
-           double tracker_gear_ratio)
+           pros::v5::MotorGears drivetrain_motor_cartridge,
+           int left_rotation_port, int right_rotation_port,
+           double tracker_wheel_diameter, double tracker_gear_ratio)
     : inertial_sensor(inertial_sensor_port),
       left_adi_encoder_tracker(-1, -1, false),
       right_adi_encoder_tracker(-1, -1, false),
@@ -218,14 +221,14 @@ Tank::Tank(std::vector<int> left_motor_ports,
       left_rotation_tracker(left_rotation_port),
       right_rotation_tracker(right_rotation_port), center_rotation_tracker(-1) {
   for (auto i : left_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     left_motors.push_back(temp);
   }
   for (auto i : right_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     right_motors.push_back(temp);
   }
-  wheel_motor_cartridge = drivetrain_motor_cartridge;
+  wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
   wheel_diameter = drivetrain_wheel_diameter;
@@ -242,9 +245,10 @@ Tank::Tank(std::vector<int> left_motor_ports,
 Tank::Tank(std::vector<int> left_motor_ports,
            std::vector<int> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
-           double drivetrain_motor_cartridge, int left_rotation_port,
-           int right_rotation_port, int center_rotation_port,
-           double tracker_wheel_diameter, double tracker_gear_ratio)
+           pros::v5::MotorGears drivetrain_motor_cartridge,
+           int left_rotation_port, int right_rotation_port,
+           int center_rotation_port, double tracker_wheel_diameter,
+           double tracker_gear_ratio)
     : inertial_sensor(inertial_sensor_port),
       left_adi_encoder_tracker(-1, -1, false),
       right_adi_encoder_tracker(-1, -1, false),
@@ -253,14 +257,14 @@ Tank::Tank(std::vector<int> left_motor_ports,
       right_rotation_tracker(right_rotation_port),
       center_rotation_tracker(center_rotation_port) {
   for (auto i : left_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     left_motors.push_back(temp);
   }
   for (auto i : right_motor_ports) {
-    pros::Motor temp(abs(i), util::is_reversed(i));
+    pros::Motor temp(i, drivetrain_motor_cartridge);
     right_motors.push_back(temp);
   }
-  wheel_motor_cartridge = drivetrain_motor_cartridge;
+  wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
   wheel_diameter = drivetrain_wheel_diameter;
@@ -343,6 +347,5 @@ double Tank::get_inertial_sensor_value() { return 0; }
 void Tank::reset_drive_sensors() {}
 void Tank::reset_inertial_sensor() {}
 void Tank::reset_left_drive_sensor() {}
-void Tank::reset_right_drive_sensor() {
-}
+void Tank::reset_right_drive_sensor() {}
 } // namespace apollo

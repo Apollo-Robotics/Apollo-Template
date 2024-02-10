@@ -12,27 +12,27 @@ public:
   std::vector<pros::Motor> left_motors;
   std::vector<pros::Motor> right_motors;
   pros::Imu inertial_sensor;
-  pros::ADIEncoder left_adi_encoder_tracker;
-  pros::ADIEncoder right_adi_encoder_tracker;
-  pros::ADIEncoder center_adi_encoder_tracker;
+  pros::adi::Encoder left_adi_encoder_tracker;
+  pros::adi::Encoder right_adi_encoder_tracker;
+  pros::adi::Encoder center_adi_encoder_tracker;
   pros::Rotation left_rotation_tracker;
   pros::Rotation right_rotation_tracker;
   pros::Rotation center_rotation_tracker;
   // Tank Drive - Motor encoders
   Tank(std::vector<int> left_motor_ports, std::vector<int> right_motor_ports,
        int inertial_sensor_port, double drivetrain_wheel_diameter,
-       double drivetrain_gear_ratio, double drivetrain_motor_catridge);
+       double drivetrain_gear_ratio, pros::v5::MotorGears drivetrain_motor_cartridge);
   // Tank Drive - ADI Encoders (Left, Right)
   Tank(std::vector<int> left_motor_ports, std::vector<int> right_motor_ports,
        int inertial_sensor_port, double drivetrain_wheel_diameter,
-       double drivetrain_gear_ratio, double drivetrain_motor_catridge,
+       double drivetrain_gear_ratio, pros::v5::MotorGears drivetrain_motor_cartridge,
        std::vector<int> left_adi_encoder_ports,
        std::vector<int> right_adi_encoder_ports, double tracker_wheel_diameter,
        double tracker_gear_ratio);
   // Tank Drive - ADI Encoders (Left, Right, Center)
   Tank(std::vector<int> left_motor_ports, std::vector<int> right_motor_ports,
        int inertial_sensor_port, double drivetrain_wheel_diameter,
-       double drivetrain_gear_ratio, double drivetrain_motor_catridge,
+       double drivetrain_gear_ratio, pros::v5::MotorGears drivetrain_motor_cartridge,
        std::vector<int> left_adi_encoder_ports,
        std::vector<int> right_adi_encoder_ports,
        std::vector<int> center_adi_encoder_ports, double tracker_wheel_diameter,
@@ -40,14 +40,14 @@ public:
   // Tank Drive - ADI Encoders (Left, Right) in expander
   Tank(std::vector<int> left_motor_ports, std::vector<int> right_motor_ports,
        int inertial_sensor_port, double drivetrain_wheel_diameter,
-       double drivetrain_gear_ratio, double drivetrain_motor_catridge,
+       double drivetrain_gear_ratio, pros::v5::MotorGears drivetrain_motor_cartridge,
        std::vector<int> left_adi_encoder_ports,
        std::vector<int> right_adi_encoder_ports, int expander_smart_port,
        double tracker_wheel_diameter, double tracker_gear_ratio);
   // Tank Drive - ADI Encoders (Left, Right, Center) in expander
   Tank(std::vector<int> left_motor_ports, std::vector<int> right_motor_ports,
        int inertial_sensor_port, double drivetrain_wheel_diameter,
-       double drivetrain_gear_ratio, double drivetrain_motor_catridge,
+       double drivetrain_gear_ratio, pros::v5::MotorGears drivetrain_motor_cartridge,
        std::vector<int> left_adi_encoder_ports,
        std::vector<int> right_adi_encoder_ports,
        std::vector<int> center_adi_encoder_ports, int expander_smart_port,
@@ -55,13 +55,13 @@ public:
   // Tank Drive - Rotation Sensors (Left, Right)
   Tank(std::vector<int> left_motor_ports, std::vector<int> right_motor_ports,
        int inertial_sensor_port, double drivetrain_wheel_diameter,
-       double drivetrain_gear_ratio, double drivetrain_motor_catridge,
+       double drivetrain_gear_ratio, pros::v5::MotorGears drivetrain_motor_cartridge,
        int left_rotation_port, int right_rotation_port,
        double tracker_wheel_diameter, double tracker_gear_ratio);
   // Tank Drive - Rotation Sensors (Left, Right, Center)
   Tank(std::vector<int> left_motor_ports, std::vector<int> right_motor_ports,
        int inertial_sensor_port, double drivetrain_wheel_diameter,
-       double drivetrain_gear_ratio, double drivetrain_motor_catridge,
+       double drivetrain_gear_ratio, pros::v5::MotorGears drivetrain_motor_cartridge,
        int left_rotation_port, int right_rotation_port,
        int center_rotation_port, double tracker_wheel_diameter,
        double tracker_gear_ratio);

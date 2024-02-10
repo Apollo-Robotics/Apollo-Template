@@ -5,6 +5,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 #pragma once
 #include "pros/misc.hpp"
+#include "pros/motors.hpp"
 extern pros::Controller master;
 
 namespace apollo {
@@ -21,5 +22,6 @@ enum chassis_control_type {
   FLIPPED_SPLIT_JOYSTICK
 };
 bool is_reversed(double input);
+extern int convert_gear_ratio(pros::v5::MotorGears input);
 } // namespace util
 } // namespace apollo
