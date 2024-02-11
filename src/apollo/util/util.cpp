@@ -27,5 +27,11 @@ int convert_gear_ratio(pros::v5::MotorGears input) {
     return INT32_MAX;
   }
 }
+bool is_reversed(double input) {
+  if (input < 0) {
+    return true;
+  }
+  return false;
+}
 } // namespace util
 } // namespace apollo
