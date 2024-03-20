@@ -5,13 +5,15 @@
  */
 #include "apollo/chassis/chassisTankModel.hpp"
 #include "apollo/util/util.hpp"
+#include "pros/motor_group.hpp"
 #include "pros/motors.h"
+#include "pros/motors.hpp"
 #include <cmath>
 
 namespace apollo {
 // Tank Drive - Motor encoders
-Tank::Tank(std::vector<int> left_motor_ports,
-           std::vector<int> right_motor_ports, int inertial_sensor_port,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
+           std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge)
     : inertial_sensor(inertial_sensor_port),
@@ -19,17 +21,10 @@ Tank::Tank(std::vector<int> left_motor_ports,
       right_adi_encoder_tracker(-1, -1, false),
       center_adi_encoder_tracker(-1, -1, false), left_rotation_tracker(-1),
       right_rotation_tracker(-1), center_rotation_tracker(-1) {
-  // const std::int8_t port, const pros::v5::MotorGears gearset =
-  // pros::v5::MotorGears::green,const pros::v5::MotorUnits encoder_units =
-  // pros::v5::MotorUnits::degrees
-  for (auto i : left_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    left_motors.push_back(temp);
-  }
-  for (auto i : right_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    right_motors.push_back(temp);
-  }
+  pros::MotorGroup left_temp(left_motor_ports);
+  left_motor_group().append(left_temp);
+  pros::MotorGroup right_temp(right_motor_ports);
+  right_motor_group().append(right_temp);
   wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
@@ -45,12 +40,12 @@ Tank::Tank(std::vector<int> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 // Tank Drive - ADI Encoders (Left, Right)
-Tank::Tank(std::vector<int> left_motor_ports,
-           std::vector<int> right_motor_ports, int inertial_sensor_port,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
+           std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
-           std::vector<int> left_adi_encoder_ports,
-           std::vector<int> right_adi_encoder_ports,
+           std::vector<int8_t> left_adi_encoder_ports,
+           std::vector<int8_t> right_adi_encoder_ports,
            double tracker_wheel_diameter, double tracker_gear_ratio)
     : inertial_sensor(inertial_sensor_port),
       left_adi_encoder_tracker(left_adi_encoder_ports[0],
@@ -61,14 +56,10 @@ Tank::Tank(std::vector<int> left_motor_ports,
                                 util::is_reversed(right_adi_encoder_ports[0])),
       center_adi_encoder_tracker(-1, -1, false), left_rotation_tracker(-1),
       right_rotation_tracker(-1), center_rotation_tracker(-1) {
-  for (auto i : left_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    left_motors.push_back(temp);
-  }
-  for (auto i : right_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    right_motors.push_back(temp);
-  }
+  pros::MotorGroup left_temp(left_motor_ports);
+  left_motor_group().append(left_temp);
+  pros::MotorGroup right_temp(right_motor_ports);
+  right_motor_group().append(right_temp);
   wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
@@ -83,12 +74,12 @@ Tank::Tank(std::vector<int> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 // Tank Drive - ADI Encoders (Left, Right, Center)
-Tank::Tank(std::vector<int> left_motor_ports,
-           std::vector<int> right_motor_ports, int inertial_sensor_port,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
+           std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
-           std::vector<int> left_adi_encoder_ports,
-           std::vector<int> right_adi_encoder_ports,
+           std::vector<int8_t> left_adi_encoder_ports,
+           std::vector<int8_t> right_adi_encoder_ports,
            std::vector<int> center_adi_encoder_ports,
            double tracker_wheel_diameter, double tracker_gear_ratio)
     : inertial_sensor(inertial_sensor_port),
@@ -103,14 +94,10 @@ Tank::Tank(std::vector<int> left_motor_ports,
           util::is_reversed(center_adi_encoder_ports[0])),
       left_rotation_tracker(-1), right_rotation_tracker(-1),
       center_rotation_tracker(-1) {
-  for (auto i : left_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    left_motors.push_back(temp);
-  }
-  for (auto i : right_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    right_motors.push_back(temp);
-  }
+  pros::MotorGroup left_temp(left_motor_ports);
+  left_motor_group().append(left_temp);
+  pros::MotorGroup right_temp(right_motor_ports);
+  right_motor_group().append(right_temp);
   wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
@@ -125,12 +112,12 @@ Tank::Tank(std::vector<int> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 // Tank Drive - ADI Encoders (Left, Right) in expander
-Tank::Tank(std::vector<int> left_motor_ports,
-           std::vector<int> right_motor_ports, int inertial_sensor_port,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
+           std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
-           std::vector<int> left_adi_encoder_ports,
-           std::vector<int> right_adi_encoder_ports, int expander_smart_port,
+           std::vector<int8_t> left_adi_encoder_ports,
+           std::vector<int8_t> right_adi_encoder_ports, int expander_smart_port,
            double tracker_wheel_diameter, double tracker_gear_ratio)
     : inertial_sensor(inertial_sensor_port),
       left_adi_encoder_tracker({expander_smart_port, left_adi_encoder_ports[0],
@@ -142,14 +129,10 @@ Tank::Tank(std::vector<int> left_motor_ports,
                                 util::is_reversed(right_adi_encoder_ports[0])),
       center_adi_encoder_tracker(-1, -1, false), left_rotation_tracker(-1),
       right_rotation_tracker(-1), center_rotation_tracker(-1) {
-  for (auto i : left_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    left_motors.push_back(temp);
-  }
-  for (auto i : right_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    right_motors.push_back(temp);
-  }
+  pros::MotorGroup left_temp(left_motor_ports);
+  left_motor_group().append(left_temp);
+  pros::MotorGroup right_temp(right_motor_ports);
+  right_motor_group().append(right_temp);
   wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
@@ -164,12 +147,12 @@ Tank::Tank(std::vector<int> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 // Tank Drive - ADI Encoders (Left, Right, Center) in expander
-Tank::Tank(std::vector<int> left_motor_ports,
-           std::vector<int> right_motor_ports, int inertial_sensor_port,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
+           std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
-           std::vector<int> left_adi_encoder_ports,
-           std::vector<int> right_adi_encoder_ports,
+           std::vector<int8_t> left_adi_encoder_ports,
+           std::vector<int8_t> right_adi_encoder_ports,
            std::vector<int> center_adi_encoder_ports, int expander_smart_port,
            double tracker_wheel_diameter, double tracker_gear_ratio)
     : inertial_sensor(inertial_sensor_port),
@@ -186,14 +169,10 @@ Tank::Tank(std::vector<int> left_motor_ports,
           util::is_reversed(center_adi_encoder_ports[0])),
       left_rotation_tracker(-1), right_rotation_tracker(-1),
       center_rotation_tracker(-1) {
-  for (auto i : left_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    left_motors.push_back(temp);
-  }
-  for (auto i : right_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    right_motors.push_back(temp);
-  }
+  pros::MotorGroup left_temp(left_motor_ports);
+  left_motor_group().append(left_temp);
+  pros::MotorGroup right_temp(right_motor_ports);
+  right_motor_group().append(right_temp);
   wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
@@ -208,8 +187,8 @@ Tank::Tank(std::vector<int> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 // Tank Drive - Rotation Sensors (Left, Right)
-Tank::Tank(std::vector<int> left_motor_ports,
-           std::vector<int> right_motor_ports, int inertial_sensor_port,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
+           std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
            int left_rotation_port, int right_rotation_port,
@@ -220,14 +199,10 @@ Tank::Tank(std::vector<int> left_motor_ports,
       center_adi_encoder_tracker(-1, -1, false),
       left_rotation_tracker(left_rotation_port),
       right_rotation_tracker(right_rotation_port), center_rotation_tracker(-1) {
-  for (auto i : left_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    left_motors.push_back(temp);
-  }
-  for (auto i : right_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    right_motors.push_back(temp);
-  }
+  pros::MotorGroup left_temp(left_motor_ports);
+  left_motor_group().append(left_temp);
+  pros::MotorGroup right_temp(right_motor_ports);
+  right_motor_group().append(right_temp);
   wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
@@ -242,8 +217,8 @@ Tank::Tank(std::vector<int> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 // Tank Drive - Rotation Sensors (Left, Right, Center)
-Tank::Tank(std::vector<int> left_motor_ports,
-           std::vector<int> right_motor_ports, int inertial_sensor_port,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
+           std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
            int left_rotation_port, int right_rotation_port,
@@ -256,14 +231,10 @@ Tank::Tank(std::vector<int> left_motor_ports,
       left_rotation_tracker(left_rotation_port),
       right_rotation_tracker(right_rotation_port),
       center_rotation_tracker(center_rotation_port) {
-  for (auto i : left_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    left_motors.push_back(temp);
-  }
-  for (auto i : right_motor_ports) {
-    pros::Motor temp(i, drivetrain_motor_cartridge);
-    right_motors.push_back(temp);
-  }
+  pros::MotorGroup left_temp(left_motor_ports);
+  left_motor_group().append(left_temp);
+  pros::MotorGroup right_temp(right_motor_ports);
+  right_motor_group().append(right_temp);
   wheel_motor_cartridge = util::convert_gear_ratio(drivetrain_motor_cartridge);
   wheel_diameter = drivetrain_wheel_diameter;
   wheel_circumference = drivetrain_wheel_diameter * M_PI;
@@ -277,75 +248,73 @@ Tank::Tank(std::vector<int> left_motor_ports,
   drivetrain_tick_per_inch =
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
+/////
 // Control
-void Tank::tank_control() {}
-void Tank::arcade_control() {}
-void Tank::set_left_motors_voltage(int input) {
-  for (auto i : left_motors) {
-    i.move_voltage(input * (12000.0 / 127.0));
-  }
+/////
+
+// Setting Joysticks
+void Tank::set_joystick_deadband(double input) { joystick_deadband = input; }
+void Tank::set_left_drive_joystick(pros::controller_analog_e_t input) {
+  left_tank_joystick = input;
 }
-void Tank::set_right_motors_voltage(int input) {
-  for (auto i : right_motors) {
-    i.move_voltage(input * (12000.0 / 127.0));
-  }
+void Tank::set_right_drive_joystick(pros::controller_analog_e_t input) {
+  right_tank_joystick = input;
 }
-void Tank::get_scaled_joystick_output(pros::controller_analog_e_t input) {}
-// Drive Params
-void Tank::set_brake_mode(pros::motor_brake_mode_e_t) {}
-pros::motor_brake_mode_e_t Tank::get_brake_mode() {
-  return pros::E_MOTOR_BRAKE_HOLD;
+void Tank::set_forward_arcade_joystick(pros::controller_analog_e_t input) {
+  forward_arcade_joystick = input;
 }
-void Tank::set_encoder_units(pros::motor_encoder_units_e_t input) {}
-pros::motor_encoder_units_e_t Tank::get_encoder_units() {
-  return pros::E_MOTOR_ENCODER_ROTATIONS;
+void Tank::set_turn_arcade_joystick(pros::controller_analog_e_t input) {
+  turn_arcade_joystick = input;
 }
-void Tank::set_max_velocity(int input) { max_drive_velocity = input; }
-int Tank::get_max_velocity() { return max_drive_velocity; }
-void Tank::set_max_voltage(double input) { max_drive_voltage = input; }
-double Tank::get_max_voltage() { return max_drive_voltage; }
-// Telemetry
-int Tank::get_left_sensor_value() {
-  if (current_tracker_type == util::DRIVE_MOTOR_ENCODER) {
-    return left_motors[0].get_position();
-  } else if (current_tracker_type == util::DRIVE_ADI_ENCODER) {
-    return left_adi_encoder_tracker.get_value();
-  } else if (current_tracker_type == util::DRIVE_ROTATION_SENSOR) {
-    return left_rotation_tracker.get_position();
+
+//  Getting Joysticks
+double Tank::get_joystick_deadband() { return joystick_deadband; };
+pros::controller_analog_e_t Tank::get_left_drive_joystick() {
+  return left_tank_joystick;
+}
+pros::controller_analog_e_t Tank::get_right_drive_joystick() {
+  return right_tank_joystick;
+}
+pros::controller_analog_e_t Tank::get_forward_arcade_joystick() {
+  return forward_arcade_joystick;
+}
+pros::controller_analog_e_t Tank::get_turn_arcade_joystick() {
+  return turn_arcade_joystick;
+}
+
+// Joystick Sub-Methods
+int Tank::get_scaled_voltage_ouput(int input) {
+  if (input > 127) {
+    return 12000;
   } else {
-    return 0;
+    return input * 12000 / 127;
   }
 }
-int Tank::get_left_sensor_velocity() {
-  if (current_tracker_type == util::DRIVE_MOTOR_ENCODER) {
-    return left_motors[0].get_actual_velocity();
-  } else if (current_tracker_type == util::DRIVE_ADI_ENCODER) {
-    return left_adi_encoder_tracker.get_value();
-  } else if (current_tracker_type == util::DRIVE_ROTATION_SENSOR) {
-    return left_rotation_tracker.get_position();
+
+// Tank and Arcade Control
+void Tank::tank_control() {
+  if (abs(master.get_analog(left_tank_joystick)) > joystick_deadband ||
+      abs(master.get_analog(right_tank_joystick)) > joystick_deadband) {
+    left_motor_group().move_velocity(master.get_analog(left_tank_joystick));
+    right_motor_group().move_velocity(master.get_analog(right_tank_joystick));
   } else {
-    return 0;
+    left_motor_group().move(0);
+    right_motor_group().move(0);
   }
 }
-double Tank::get_left_motor_voltage() { return 0; }
-double Tank::get_left_motor_current() { return 0; }
-int Tank::get_right_sensor_value() {
-  if (current_tracker_type == util::DRIVE_MOTOR_ENCODER) {
-    return right_motors[0].get_position();
-  } else if (current_tracker_type == util::DRIVE_ADI_ENCODER) {
-    return right_adi_encoder_tracker.get_value();
-  } else if (current_tracker_type == util::DRIVE_ROTATION_SENSOR) {
-    return right_rotation_tracker.get_position();
+void Tank::arcade_control() {
+  if (abs(master.get_analog(forward_arcade_joystick)) > joystick_deadband ||
+      abs(master.get_analog(turn_arcade_joystick)) > joystick_deadband) {
+    left_motor_group().move_velocity(
+        master.get_analog(forward_arcade_joystick) +
+        master.get_analog(turn_arcade_joystick));
+    right_motor_group().move_velocity(
+        master.get_analog(forward_arcade_joystick) -
+        master.get_analog(turn_arcade_joystick));
+
   } else {
-    return 0;
+    left_motor_group().move(0);
+    right_motor_group().move(0);
   }
 }
-int Tank::get_right_sensor_velocity() { return 0; }
-double Tank::get_right_motor_voltage() { return 0; }
-double Tank::get_right_motor_current() { return 0; }
-double Tank::get_inertial_sensor_value() { return 0; }
-void Tank::reset_drive_sensors() {}
-void Tank::reset_inertial_sensor() {}
-void Tank::reset_left_drive_sensor() {}
-void Tank::reset_right_drive_sensor() {}
 } // namespace apollo
