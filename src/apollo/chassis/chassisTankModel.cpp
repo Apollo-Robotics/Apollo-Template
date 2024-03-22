@@ -13,13 +13,18 @@
 namespace apollo {
 /**
  * @brief Construct a new Tank Drive Drivetrain using Motor Encoders
- * 
- * @param left_motor_ports The ports that the Left Motors are connected to. The first motor is the sensored motor.
- * @param right_motor_ports The ports that the Right Motors are connected to. The first motor is the sensored motor.
+ *
+ * @param left_motor_ports The ports that the Left Motors are connected to. The
+ * first motor is the sensored motor.
+ * @param right_motor_ports The ports that the Right Motors are connected to.
+ * The first motor is the sensored motor.
  * @param inertial_sensor_port The Inertial Sensor's port
- * @param drivetrain_wheel_diameter Diameter of your drivetrain wheels. Used for PID functions.
- * @param drivetrain_gear_ratio Gear Ratio of your drivetrain. Used for PID functions.
- * @param drivetrain_motor_cartridge Motor Cartridge of your drivetrain. Used for PID functions.
+ * @param drivetrain_wheel_diameter Diameter of your drivetrain wheels. Used for
+ * PID functions.
+ * @param drivetrain_gear_ratio Gear Ratio of your drivetrain. Used for PID
+ * functions.
+ * @param drivetrain_motor_cartridge Motor Cartridge of your drivetrain. Used
+ * for PID functions.
  */
 Tank::Tank(std::vector<int8_t> left_motor_ports,
            std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
@@ -49,18 +54,25 @@ Tank::Tank(std::vector<int8_t> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 /**
- * @brief Construct a new Tank Drive Drivetrain using Left and Right ADI Encoders
- * 
- * @param left_motor_ports The ports that the Left Motors are connected to. The first motor is the sensored motor.
- * @param right_motor_ports The ports that the Right Motors are connected to. The first motor is the sensored motor.
+ * @brief Construct a new Tank Drive Drivetrain using Left and Right ADI
+ * Encoders
+ *
+ * @param left_motor_ports The ports that the Left Motors are connected to. The
+ * first motor is the sensored motor.
+ * @param right_motor_ports The ports that the Right Motors are connected to.
+ * The first motor is the sensored motor.
  * @param inertial_sensor_port The Inertial Sensor's port
  * @param drivetrain_wheel_diameter Diameter of your drivetrain wheels.
  * @param drivetrain_gear_ratio Gear Ratio of your drivetrain.
  * @param drivetrain_motor_cartridge Motor Cartridge of your drivetrain
- * @param left_adi_encoder_ports Ports of the Left ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param right_adi_encoder_ports Ports of the Right ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID functions.
- * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID functions.
+ * @param left_adi_encoder_ports Ports of the Left ADI Encoder. First port is
+ * assumed to be the 'top' port of the encoder.
+ * @param right_adi_encoder_ports Ports of the Right ADI Encoder. First port is
+ * assumed to be the 'top' port of the encoder.
+ * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID
+ * functions.
+ * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID
+ * functions.
  */
 Tank::Tank(std::vector<int8_t> left_motor_ports,
            std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
@@ -96,19 +108,27 @@ Tank::Tank(std::vector<int8_t> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 /**
- * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center Horizontal ADI Encoders
- * 
- * @param left_motor_ports The ports that the Left Motors are connected to. The first motor is the sensored motor.
- * @param right_motor_ports The ports that the Right Motors are connected to. The first motor is the sensored motor.
+ * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center
+ * Horizontal ADI Encoders
+ *
+ * @param left_motor_ports The ports that the Left Motors are connected to. The
+ * first motor is the sensored motor.
+ * @param right_motor_ports The ports that the Right Motors are connected to.
+ * The first motor is the sensored motor.
  * @param inertial_sensor_port The Inertial Sensor's port
  * @param drivetrain_wheel_diameter Diameter of your drivetrain wheels.
  * @param drivetrain_gear_ratio Gear Ratio of your drivetrain.
  * @param drivetrain_motor_cartridge Motor Cartridge of your drivetrain
- * @param left_adi_encoder_ports Ports of the Left ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param right_adi_encoder_ports Ports of the Right ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param center_adi_encoder_ports Ports of the Center ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID functions.
- * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID functions.
+ * @param left_adi_encoder_ports Ports of the Left ADI Encoder. First port is
+ * assumed to be the 'top' port of the encoder.
+ * @param right_adi_encoder_ports Ports of the Right ADI Encoder. First port is
+ * assumed to be the 'top' port of the encoder.
+ * @param center_adi_encoder_ports Ports of the Center ADI Encoder. First port
+ * is assumed to be the 'top' port of the encoder.
+ * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID
+ * functions.
+ * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID
+ * functions.
  */
 Tank::Tank(std::vector<int8_t> left_motor_ports,
            std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
@@ -148,19 +168,27 @@ Tank::Tank(std::vector<int8_t> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 /**
- * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center Horizontal ADI Encoders
- * 
- * @param left_motor_ports The ports that the Left Motors are connected to. The first motor is the sensored motor.
- * @param right_motor_ports The ports that the Right Motors are connected to. The first motor is the sensored motor.
+ * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center
+ * Horizontal ADI Encoders
+ *
+ * @param left_motor_ports The ports that the Left Motors are connected to. The
+ * first motor is the sensored motor.
+ * @param right_motor_ports The ports that the Right Motors are connected to.
+ * The first motor is the sensored motor.
  * @param inertial_sensor_port The Inertial Sensor's port
  * @param drivetrain_wheel_diameter Diameter of your drivetrain wheels.
  * @param drivetrain_gear_ratio Gear Ratio of your drivetrain.
  * @param drivetrain_motor_cartridge Motor Cartridge of your drivetrain
- * @param left_adi_encoder_ports Ports of the Left ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param right_adi_encoder_ports Ports of the Right ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param expander_smart_port 3-Wire Expanders smart port. Assumes all of your tracking wheels are connected to the expander.
- * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID functions.
- * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID functions.
+ * @param left_adi_encoder_ports Ports of the Left ADI Encoder. First port is
+ * assumed to be the 'top' port of the encoder.
+ * @param right_adi_encoder_ports Ports of the Right ADI Encoder. First port is
+ * assumed to be the 'top' port of the encoder.
+ * @param expander_smart_port 3-Wire Expanders smart port. Assumes all of your
+ * tracking wheels are connected to the expander.
+ * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID
+ * functions.
+ * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID
+ * functions.
  */
 Tank::Tank(std::vector<int8_t> left_motor_ports,
            std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
@@ -197,22 +225,31 @@ Tank::Tank(std::vector<int8_t> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 /**
- * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center Horizontal ADI Encoders
- * 
- * @param left_motor_ports The ports that the Left Motors are connected to. The first motor is the sensored motor.
- * @param right_motor_ports The ports that the Right Motors are connected to. The first motor is the sensored motor.
+ * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center
+ * Horizontal ADI Encoders
+ *
+ * @param left_motor_ports The ports that the Left Motors are connected to. The
+ * first motor is the sensored motor.
+ * @param right_motor_ports The ports that the Right Motors are connected to.
+ * The first motor is the sensored motor.
  * @param inertial_sensor_port The Inertial Sensor's port
  * @param drivetrain_wheel_diameter Diameter of your drivetrain wheels.
  * @param drivetrain_gear_ratio Gear Ratio of your drivetrain.
  * @param drivetrain_motor_cartridge Motor Cartridge of your drivetrain
- * @param left_adi_encoder_ports Ports of the Left ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param right_adi_encoder_ports Ports of the Right ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param center_adi_encoder_ports Ports of the Center ADI Encoder. First port is assumed to be the 'top' port of the encoder.
- * @param expander_smart_port 3-Wire Expanders smart port. Assumes all of your tracking wheels are connected to the expander.
- * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID functions.
- * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID functions.
+ * @param left_adi_encoder_ports Ports of the Left ADI Encoder. First port is
+ * assumed to be the 'top' port of the encoder.
+ * @param right_adi_encoder_ports Ports of the Right ADI Encoder. First port is
+ * assumed to be the 'top' port of the encoder.
+ * @param center_adi_encoder_ports Ports of the Center ADI Encoder. First port
+ * is assumed to be the 'top' port of the encoder.
+ * @param expander_smart_port 3-Wire Expanders smart port. Assumes all of your
+ * tracking wheels are connected to the expander.
+ * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID
+ * functions.
+ * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID
+ * functions.
  */
- Tank::Tank(std::vector<int8_t> left_motor_ports,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
            std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
@@ -252,20 +289,26 @@ Tank::Tank(std::vector<int8_t> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 /**
- * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center Horizontal ADI Encoders
- * 
- * @param left_motor_ports The ports that the Left Motors are connected to. The first motor is the sensored motor.
- * @param right_motor_ports The ports that the Right Motors are connected to. The first motor is the sensored motor.
+ * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center
+ * Horizontal ADI Encoders
+ *
+ * @param left_motor_ports The ports that the Left Motors are connected to. The
+ * first motor is the sensored motor.
+ * @param right_motor_ports The ports that the Right Motors are connected to.
+ * The first motor is the sensored motor.
  * @param inertial_sensor_port The Inertial Sensor's port
  * @param drivetrain_wheel_diameter Diameter of your drivetrain wheels.
  * @param drivetrain_gear_ratio Gear Ratio of your drivetrain.
  * @param drivetrain_motor_cartridge Motor Cartridge of your drivetrain
  * @param left_rotation_port Port of the Left Rotation sensor used for tracking.
- * @param right_rotation_port Port of the Right Rotation sensor used for tracking.
- * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID functions.
- * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID functions.
+ * @param right_rotation_port Port of the Right Rotation sensor used for
+ * tracking.
+ * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID
+ * functions.
+ * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID
+ * functions.
  */
- Tank::Tank(std::vector<int8_t> left_motor_ports,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
            std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
@@ -295,21 +338,28 @@ Tank::Tank(std::vector<int8_t> left_motor_ports,
       (drivetrain_tick_per_revolution / tracker_circumference);
 }
 /**
- * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center Horizontal ADI Encoders
- * 
- * @param left_motor_ports The ports that the Left Motors are connected to. The first motor is the sensored motor.
- * @param right_motor_ports The ports that the Right Motors are connected to. The first motor is the sensored motor.
+ * @brief Construct a new Tank Drive Drivetrain using Left, Right, and Center
+ * Horizontal ADI Encoders
+ *
+ * @param left_motor_ports The ports that the Left Motors are connected to. The
+ * first motor is the sensored motor.
+ * @param right_motor_ports The ports that the Right Motors are connected to.
+ * The first motor is the sensored motor.
  * @param inertial_sensor_port The Inertial Sensor's port
  * @param drivetrain_wheel_diameter Diameter of your drivetrain wheels.
  * @param drivetrain_gear_ratio Gear Ratio of your drivetrain.
  * @param drivetrain_motor_cartridge Motor Cartridge of your drivetrain
  * @param left_rotation_port Port of the Left Rotation sensor used for tracking.
- * @param right_rotation_port Port of the Right Rotation sensor used for tracking.
- * @param center_rotation_port Port of the Center Rotation sensor used for tracking.
- * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID functions.
- * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID functions.
+ * @param right_rotation_port Port of the Right Rotation sensor used for
+ * tracking.
+ * @param center_rotation_port Port of the Center Rotation sensor used for
+ * tracking.
+ * @param tracker_wheel_diameter Diameter of your tracking wheels. Used for PID
+ * functions.
+ * @param tracker_gear_ratio Gear Ratio of your tracking wheels. Used for PID
+ * functions.
  */
- Tank::Tank(std::vector<int8_t> left_motor_ports,
+Tank::Tank(std::vector<int8_t> left_motor_ports,
            std::vector<int8_t> right_motor_ports, int inertial_sensor_port,
            double drivetrain_wheel_diameter, double drivetrain_gear_ratio,
            pros::v5::MotorGears drivetrain_motor_cartridge,
@@ -339,74 +389,5 @@ Tank::Tank(std::vector<int8_t> left_motor_ports,
   drivetrain_tick_per_revolution = wheel_motor_cartridge * tracker_gear_ratio;
   drivetrain_tick_per_inch =
       (drivetrain_tick_per_revolution / tracker_circumference);
-}
-/////
-// Control
-/////
-
-// Setting Joysticks
-void Tank::set_joystick_deadband(double input) { joystick_deadband = input; }
-void Tank::set_left_drive_joystick(pros::controller_analog_e_t input) {
-  left_tank_joystick = input;
-}
-void Tank::set_right_drive_joystick(pros::controller_analog_e_t input) {
-  right_tank_joystick = input;
-}
-void Tank::set_forward_arcade_joystick(pros::controller_analog_e_t input) {
-  forward_arcade_joystick = input;
-}
-void Tank::set_turn_arcade_joystick(pros::controller_analog_e_t input) {
-  turn_arcade_joystick = input;
-}
-
-//  Getting Joysticks
-double Tank::get_joystick_deadband() { return joystick_deadband; };
-pros::controller_analog_e_t Tank::get_left_drive_joystick() {
-  return left_tank_joystick;
-}
-pros::controller_analog_e_t Tank::get_right_drive_joystick() {
-  return right_tank_joystick;
-}
-pros::controller_analog_e_t Tank::get_forward_arcade_joystick() {
-  return forward_arcade_joystick;
-}
-pros::controller_analog_e_t Tank::get_turn_arcade_joystick() {
-  return turn_arcade_joystick;
-}
-
-// Joystick Sub-Methods
-int Tank::get_scaled_voltage_ouput(int input) {
-  if (input > 127) {
-    return 12000;
-  } else {
-    return input * 12000 / 127;
-  }
-}
-
-// Tank and Arcade Control
-void Tank::tank_control() {
-  if (abs(master.get_analog(left_tank_joystick)) > joystick_deadband ||
-      abs(master.get_analog(right_tank_joystick)) > joystick_deadband) {
-    left_motor_group().move_velocity(master.get_analog(left_tank_joystick));
-    right_motor_group().move_velocity(master.get_analog(right_tank_joystick));
-  } else {
-    left_motor_group().move(0);
-    right_motor_group().move(0);
-  }
-}
-void Tank::arcade_control() {
-  if (abs(master.get_analog(forward_arcade_joystick)) > joystick_deadband ||
-      abs(master.get_analog(turn_arcade_joystick)) > joystick_deadband) {
-    left_motor_group().move_velocity(
-        master.get_analog(forward_arcade_joystick) +
-        master.get_analog(turn_arcade_joystick));
-    right_motor_group().move_velocity(
-        master.get_analog(forward_arcade_joystick) -
-        master.get_analog(turn_arcade_joystick));
-
-  } else {
-    left_motor_group().move(0);
-    right_motor_group().move(0);
-  }
 }
 } // namespace apollo
