@@ -9,19 +9,22 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 extern pros::Controller master;
 
 namespace apollo {
-namespace util {
-enum chassis_tracker_type {
-  DRIVE_MOTOR_ENCODER,
-  DRIVE_ADI_ENCODER,
-  DRIVE_ROTATION_SENSOR
-};
-enum chassis_control_type {
-  NORMAL_SINGLE_JOYSTICK,
-  NORMAL_SPLIT_JOYSTICK,
-  FLIPPED_SINGLE_JOYSTICK,
-  FLIPPED_SPLIT_JOYSTICK
-};
-bool is_reversed(double input);
-extern int convert_gear_ratio(pros::v5::MotorGears input);
-} // namespace util
-} // namespace apollo
+  namespace util {
+    enum chassis_tracker_type {
+      DRIVE_MOTOR_ENCODER,
+      DRIVE_ADI_ENCODER,
+      DRIVE_ROTATION_SENSOR
+    };
+    enum default_control_type {
+      NORMAL_TANK_JOYSTICK,
+      NORMAL_SINGLE_ARCADE_JOYSTICK,
+      NORMAL_SPLIT_ARCADE_JOYSTICK,
+      FLIPPED_SINGLE_ARCADE_JOYSTICK,
+      FLIPPED_SPLIT_ARCADE_JOYSTICK,
+      NORMAL_STRAFE_JOYSTICK
+
+    };
+    bool is_reversed(double input);
+    extern int convert_gear_ratio(pros::v5::MotorGears input);
+  }  // namespace util
+}  // namespace apollo

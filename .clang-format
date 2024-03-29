@@ -1,0 +1,12 @@
+# Configuration for clang-format
+
+Language: Cpp
+BasedOnStyle: Google
+IndentWidth: 2
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: All
+ColumnLimit: 80
+PenaltyBreakAssignment: 2
+PenaltyReturnTypeOnItsOwnLine: 200
+PointerAlignment: Left
+SpaceBeforeParens: Never
